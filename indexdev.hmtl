@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programa Diálisis en Vacaciones · Aterym Alta Gracia</title>
+<meta name="description" content="Combiná tu tratamiento de diálisis con un merecido descanso en las Sierras de Córdoba. Continuá tu atención renal con calidad y seguridad médica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ec;
+    --bg-deep: #ebe6de;
+    --bg-card: #efeae2;
+    --ink: #1a2332;
+    --ink-soft: #4a5668;
+    --muted: #8a8578;
+    --accent: #3a5a7c;
+    --accent-deep: #2a4560;
+    --accent-tint: #e4ecf3;
+    --line: rgba(26,35,50,0.12);
+    --line-soft: rgba(26,35,50,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Atmósfera Aterym */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(58,90,124,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 85% 80%, rgba(58,90,124,0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,35,50,0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.1rem clamp(1.25rem, 4vw, 2.5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-logo { height: 38px; width: auto; display: block; }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: rgba(244,241,236,0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: color .25s ease;
+  }
+  .nav-links a:hover { color: var(--bg); }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    background: var(--accent);
+    color: var(--bg) !important;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.06em !important;
+    transition: background .25s ease;
+  }
+  .nav-cta:hover { background: var(--accent-deep); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.mobile-show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--ink); padding: 1.25rem; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: flex-start; }
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 2;
+    min-height: 85vh;
+    min-height: 85dvh;
+    display: grid;
+    align-items: center;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 2.5rem);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://aterym.com/wp-content/uploads/2026/03/DIALISIS-EN-VACACIONES-3-1024x665.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,35,50,0.4) 0%, rgba(26,35,50,0.75) 60%, rgba(26,35,50,0.9) 100%);
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    color: var(--bg);
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--bg);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+    opacity: 0.9;
+    animation: fadeDown .9s ease-out both;
+  }
+  .hero-eyebrow .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--bg);
+    position: relative;
+  }
+  .hero-eyebrow .pulse::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--bg); animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(3.5); opacity: 0; } }
+
+  .hero h1 {
+    font-weight: 200;
+    font-size: clamp(2.4rem, 6.5vw, 5rem);
+    letter-spacing: -0.035em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    max-width: 22ch;
+    color: var(--bg);
+    animation: fadeUp 1s ease-out .2s both;
+  }
+  .hero h1 strong {
+    font-weight: 500;
+    color: var(--bg);
+    display: block;
+    position: relative;
+  }
+  .hero h1 strong::after {
+    content: ""; display: block; width: 60px; height: 2px; background: var(--bg); opacity: 0.5; margin-top: 0.6rem;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 52ch;
+    line-height: 1.65;
+    animation: fadeUp 1s ease-out .35s both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease-out .5s both;
+  }
+
+  /* BOTONES */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all .3s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+  }
+  .btn svg { width: 15px; height: 15px; transition: transform .3s ease; }
+  .btn:hover svg { transform: translateX(4px); }
+
+  .btn-primary { background: var(--bg); color: var(--ink); }
+  .btn-primary::before {
+    content: ""; position: absolute; inset: 0; background: var(--accent); transform: translateX(-101%); transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--bg); }
+  .btn-primary:hover::before { transform: translateX(0); }
+
+  .btn-ghost {
+    background: transparent; color: var(--bg); border: 1px solid rgba(244,241,236,0.35);
+  }
+  .btn-ghost:hover { border-color: var(--bg); background: rgba(244,241,236,0.08); }
+
+  .btn-dark { background: var(--ink); color: var(--bg); }
+  .btn-dark::before {
+    content: ""; position: absolute; inset: 0; background: var(--accent); transform: translateX(-101%); transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-dark span, .btn-dark svg { position: relative; z-index: 1; }
+  .btn-dark:hover::before { transform: translateX(0); }
+  .btn-dark:hover { transform: translateY(-2px); }
+
+  /* SECTIONS */
+  .section {
+    position: relative;
+    z-index: 2;
+    padding: clamp(4rem, 10vw, 7rem) clamp(1.25rem, 4vw, 2.5rem);
+  }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-inner.wide { max-width: 1280px; }
+  .section-header { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .section-eyebrow {
+    display: inline-block; font-size: 0.72rem; font-weight: 600; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .section-title {
+    font-weight: 200; font-size: clamp(1.9rem, 4.2vw, 3rem); color: var(--ink); letter-spacing: -0.03em; line-height: 1.1; max-width: 24ch; margin: 0 auto;
+  }
+  .section-title strong { font-weight: 500; color: var(--accent); }
+  .section-sub {
+    font-size: 1rem; color: var(--ink-soft); max-width: 50ch; margin: 1.25rem auto 0; font-weight: 300; line-height: 1.65;
+  }
+  .section.alt { background: var(--bg-deep); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
+
+  /* PASOS (COMO FUNCIONA) */
+  .pasos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;
+  }
+  .paso-card {
+    background: var(--bg); border: 1px solid var(--line-soft); border-radius: 2px; padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; transition: all .3s; position: relative; overflow: hidden;
+  }
+  .paso-card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); transform: scaleY(0); transform-origin: top; transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .paso-card:hover { border-color: var(--accent); transform: translateY(-4px); background: var(--bg-card); }
+  .paso-card:hover::before { transform: scaleY(1); }
+  
+  .paso-num { font-weight: 200; font-size: 3rem; line-height: 1; color: var(--accent); letter-spacing: -0.04em; }
+  .paso-card h3 { font-size: 1.25rem; font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+  .paso-card p { font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.6; }
+
+  @media (max-width: 900px) { .pasos-grid { grid-template-columns: 1fr; } .paso-card { padding: 2rem; } }
+
+  /* PREGUNTAS FRECUENTES (ESTILO ACORDEÓN JORNADAS) */
+  .faq-container { max-width: 820px; margin: 0 auto; }
+  .bloque {
+    background: var(--bg-deep); border: 1px solid var(--line-soft); border-radius: 2px; margin: 0.6rem 0; overflow: hidden; transition: all 0.3s ease;
+  }
+  .bloque:hover { border-color: var(--line); }
+  .bloque.abierto { border-color: var(--accent); background: var(--bg-card); }
+  
+  .bloque-header {
+    display: flex; align-items: center; gap: 1.25rem; padding: 1.35rem 1.75rem; cursor: pointer; user-select: none;
+  }
+  .bloque.abierto .bloque-header { border-bottom: 1px solid var(--line-soft); }
+  .bloque-titulo { flex: 1; font-weight: 400; color: var(--ink); font-size: 1rem; line-height: 1.4; letter-spacing: -0.005em; }
+  
+  .bloque-icono {
+    width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; position: relative;
+  }
+  .bloque-icono::before, .bloque-icono::after { content: ''; position: absolute; background: var(--ink-soft); transition: all 0.3s ease; }
+  .bloque-icono::before { width: 9px; height: 1px; }
+  .bloque-icono::after { width: 1px; height: 9px; }
+  .bloque.abierto .bloque-icono { background: var(--accent); border-color: var(--accent); }
+  .bloque.abierto .bloque-icono::before, .bloque.abierto .bloque-icono::after { background: var(--bg); }
+  .bloque.abierto .bloque-icono::after { transform: rotate(90deg); }
+  
+  .bloque-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .bloque.abierto .bloque-body { max-height: 800px; }
+  .bloque-contenido { padding: 1.5rem 1.75rem 1.75rem; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .bloque-contenido strong { color: var(--ink); font-weight: 500; }
+
+  @media (max-width: 768px) {
+    .bloque-header { padding: 1.1rem 1.25rem; }
+    .bloque-titulo { font-size: 0.93rem; }
+    .bloque-contenido { padding: 1.25rem; }
+  }
+
+  /* CTA FINAL */
+  .cta-final { text-align: center; padding: clamp(4rem, 8vw, 6rem) clamp(1.25rem, 4vw, 2.5rem); position: relative; z-index: 2; }
+  .cta-final .section-title { margin-bottom: 1.5rem; }
+  .cta-final .section-sub { margin-bottom: 2.5rem; }
+  .cta-final-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer { background: var(--ink); color: var(--bg); padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2.5rem) 2rem; position: relative; z-index: 2; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(244,241,236,0.12); }
+  .footer-logo img { height: 42px; width: auto; margin-bottom: 1.25rem; }
+  .footer-logo p { font-size: 0.88rem; opacity: 0.65; line-height: 1.6; font-weight: 300; max-width: 32ch; }
+  .footer-col h4 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bg); opacity: 0.5; margin-bottom: 1.25rem; }
+  .footer-col ul { display: flex; flex-direction: column; gap: 0.6rem; list-style: none; }
+  .footer-col a { color: var(--bg); font-size: 0.88rem; opacity: 0.8; font-weight: 300; text-decoration: none; transition: opacity .25s; }
+  .footer-col a:hover { opacity: 1; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 1.5rem; font-size: 0.78rem; opacity: 0.5; flex-wrap: wrap; gap: 1rem; }
+  .footer-socials { display: flex; gap: 1.25rem; }
+  .footer-socials a { opacity: 0.7; color: inherit; transition: opacity .25s; }
+  .footer-socials a:hover { opacity: 1; }
+  .footer-socials svg { width: 18px; height: 18px; }
+
+  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+
+  /* ANIMACIONES */
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200; width: 60px; height: 60px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px -6px rgba(37,211,102,.45); transition: transform .3s cubic-bezier(.2,.8,.2,1); animation: waFloat 3s ease-in-out infinite; color: #fff; text-decoration: none;
+  }
+  .wa-float:hover { background: #1DA851; transform: scale(1.08) translateY(-2px); }
+  .wa-float svg { width: 32px; height: 32px; fill: currentColor; }
+  @keyframes waFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @media (max-width: 540px) { .wa-float { width: 54px; height: 54px; bottom: 18px; right: 18px; } .wa-float svg { width: 28px; height: 28px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://aterym.com" aria-label="Aterym Alta Gracia"><img class="nav-logo" src="https://aterym.com/wp-content/uploads/2025/12/Logo-blanco-Aterym.webp" alt="Aterym Alta Gracia"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://aterym.com/">Home</a></li>
+      <li><a href="https://aterym.com/institucion/">Institución</a></li>
+      <li><a href="#como-funciona">Cómo funciona</a></li>
+      <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
+      <li><a class="nav-cta" href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('mobile-show')" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="pulse"></span><span>Sierras de Córdoba · Todo el año</span></div>
+    <h1>Programa<strong>Diálisis en Vacaciones</strong></h1>
+    <p class="hero-sub">Como en tu casa, pero en la nuestra. Un programa pensado para que puedas combinar tu tratamiento de diálisis con un merecido descanso en las Sierras de Córdoba, sin la mochila extra de la preocupación.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#como-funciona">
+        <span>Ver requisitos</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#contacto">
+        <span>Reservar lugar</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="como-funciona">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Paso a paso</span>
+      <h2 class="section-title">¿Cómo reservar tu <strong>tratamiento en viaje</strong>?</h2>
+      <p class="section-sub">Diseñamos un proceso ágil para coordinar con tu centro de origen y garantizar la continuidad de tu salud renal.</p>
+    </div>
+    
+    <div class="pasos-grid">
+      <div class="paso-card">
+        <div class="paso-num">01</div>
+        <h3>Definís fecha y enviás solicitud</h3>
+        <p>Completás tus datos personales e indicás las fechas exactas en las que planeás visitar la provincia y realizar tus sesiones de diálisis.</p>
+      </div>
+      <div class="paso-card">
+        <div class="paso-num">02</div>
+        <h3>Nos ponemos en contacto</h3>
+        <p>Una vez recibida la solicitud, nuestro equipo médico se comunica con vos para solicitar la historia clínica y los estudios preliminares desde tu centro de origen.</p>
+      </div>
+      <div class="paso-card">
+        <div class="paso-num">03</div>
+        <h3>¡Confirmamos tu lugar!</h3>
+        <p>Con toda la documentación médica verificada, aseguramos tu turno. Te recibiremos en nuestro centro brindándote información completa y detallada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="preguntas-frecuentes">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Dudas comunes</span>
+      <h2 class="section-title">Preguntas frecuentes sobre <strong>Diálisis en Vacaciones</strong>.</h2>
+      <p class="section-sub">Pacientes de todo el país nos eligen. Aquí resumimos todo lo necesario para tu tranquilidad médica.</p>
+    </div>
+
+    <div class="faq-container">
+      
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-titulo">¿Qué documentación médica debo presentar?</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            Deberás presentar tu <strong>documento de identidad, carnet de obra social o prepaga, tu historia clínica completa</strong> y los últimos estudios preliminares de tu centro de origen. Una vez que te contactemos, te detallaremos exactamente qué análisis laboratorios requerimos.
+          </div>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-titulo">¿Con cuánta antelación debo programar mis turnos?</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            Recomendamos programar tus turnos con **no menos de 15 días de antelación**. Esto nos permite realizar los cruces administrativos necesarios con las coberturas médicas y asegurar el espacio en la modalidad horaria que te resulte más cómoda.
+          </div>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-titulo">¿Qué obras sociales atienden en el programa?</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            Atendemos pacientes pertenecientes a <strong>PAMI</strong> así como también a diversas obras sociales nacionales, provinciales y coberturas de medicina privada. Te sugerimos consultar de forma directa vía WhatsApp para validar los convenios vigentes para tu cobertura específica.
+          </div>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-titulo">¿Qué sucede si debo reprogramar o cancelar una sesión en viaje?</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            En caso de imprevistos o de no poder asistir, solicitamos comunicarte **de inmediato** con el coordinador médico del programa Diálisis en Vacaciones para reordenar el cronograma y garantizar la continuidad absoluta de tu tratamiento clínico.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section alt cta-final" id="contacto">
+  <div class="section-inner">
+    <span class="section-eyebrow">Planificá tu viaje</span>
+    <h2 class="section-title">Disfrutá tus vacaciones con <strong>seguridad médica</strong>.</h2>
+    <p class="section-sub">Escribinos directamente por WhatsApp. Nuestro equipo administrativo te guiará con los requisitos médicos y confirmará la disponibilidad de turnos.</p>
+    <div class="cta-final-actions">
+      <a class="btn btn-dark" href="https://wa.me/5493515649322" target="_blank" rel="noopener">
+        <span>Contactar un coordinador</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <img src="https://aterym.com/wp-content/uploads/2025/12/Logo-blanco-Aterym.webp" alt="Aterym Alta Gracia">
+        <p>Centro de nefrología y hemodiálisis en Alta Gracia, Córdoba. Único centro de diálisis de la provincia acreditado en calidad y seguridad por el ITAES.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Institución</h4>
+        <ul>
+          <li><a href="https://aterym.com/calidad-y-seguridad-del-paciente/">Calidad y seguridad</a></li>
+          <li><a href="https://aterym.com/institucion/">Equipo de profesionales</a></li>
+          <li><a href="https://aterym.com/institucion/">Instalaciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="#">Brasil 151, Alta Gracia</a></li>
+          <li><a href="https://wa.me/5493515649322">WhatsApp · 351 564 9322</a></li>
+          <li><a href="mailto:info@aterym.com">info@aterym.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Programas</h4>
+        <ul>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Aterym Alta Gracia · Córdoba, Argentina</div>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/aterymnefrologia" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.linkedin.com/company/81579909/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/aterymnefrologia/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5493515649322" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16.003 0C7.166 0 .005 7.16.005 15.997c0 2.826.738 5.583 2.139 8.013L0 32l8.222-2.155a15.96 15.96 0 0 0 7.778 1.98h.003C24.84 31.825 32 24.665 32 15.83 32 11.546 30.339 7.52 27.32 4.503 24.302 1.486 20.286.003 16.003 0zm0 29.137h-.003a13.32 13.32 0 0 1-6.788-1.86l-.487-.29-5.054 1.326 1.348-4.928-.317-.505a13.296 13.296 0 0 1-2.04-7.087c.003-7.351 5.987-13.333 13.345-13.333 3.562.001 6.91 1.39 9.428 3.91a13.236 13.236 0 0 1 3.903 9.432c-.003 7.352-5.987 13.335-13.335 13.335zm7.314-9.984c-.4-.2-2.37-1.17-2.738-1.304-.368-.134-.635-.2-.902.2-.267.4-1.035 1.304-1.269 1.572-.234.267-.467.301-.867.1-.4-.2-1.69-.624-3.22-1.989-1.191-1.062-1.995-2.374-2.228-2.774-.234-.4-.025-.616.175-.815.18-.18.4-.467.6-.7.2-.234.267-.4.4-.667.134-.267.067-.5-.033-.7-.1-.2-.902-2.174-1.236-2.974-.325-.78-.655-.674-.902-.687-.234-.012-.5-.014-.768-.014-.267 0-.7.1-1.069.5-.367.4-1.402 1.37-1.402 3.343 0 1.974 1.436 3.881 1.636 4.148.2.267 2.826 4.314 6.846 6.05.957.413 1.704.66 2.286.846.96.305 1.835.262 2.527.16.77-.115 2.37-.97 2.704-1.905.334-.935.334-1.737.234-1.905-.1-.167-.367-.267-.767-.467z"/></svg>
+</a>
+
+<script>
+  // Script interactivo nativo para colapsar y abrir las FAQ (Estilo acordeón)
+  function toggleBloque(header) {
+    const bloque = header.parentElement;
+    bloque.classList.toggle('abierto');
+  }
+
+  // Cerrar el menú mobile al hacer click en un link interno
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('mobile-show');
+    });
+  });
+</script>
+
+</body>
+</html>
+
+```
