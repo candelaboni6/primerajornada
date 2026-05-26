@@ -262,7 +262,7 @@
     padding: clamp(4rem, 10vw, 7rem) clamp(1.25rem, 4vw, 2.5rem);
   }
   .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-inner.wide { max-width: 1280px; }
+  .section-inner.wide { max-width: 1240px; }
   .section-header { text-align: center; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
   .section-eyebrow {
     display: inline-block; font-size: 0.72rem; font-weight: 600; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem;
@@ -295,19 +295,60 @@
 
   @media (max-width: 900px) { .pasos-grid { grid-template-columns: 1fr; } .paso-card { padding: 2rem; } }
 
-  /* PREGUNTAS FRECUENTES (ESTILO ACORDEÓN JORNADAS) */
-  .faq-container { max-width: 820px; margin: 0 auto; }
+  /* SECCIÓN VIDEO YOUTUBE RESPONSIVO */
+  .video-section {
+    background: var(--bg);
+    padding-bottom: 1rem;
+  }
+  .video-container {
+    max-width: 820px;
+    margin: 0 auto 3rem;
+    background: var(--bg-deep);
+    border: 1px solid var(--line-soft);
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px -15px rgba(26,35,50,0.15);
+  }
+  .video-ratio {
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+  .video-ratio iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* MEJORA PREGUNTAS FRECUENTES (DISPOSICIÓN DOS COLUMNAS COMO EN LA CAPTURA) */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+  .faq-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
   .bloque {
-    background: var(--bg-deep); border: 1px solid var(--line-soft); border-radius: 2px; margin: 0.6rem 0; overflow: hidden; transition: all 0.3s ease;
+    background: var(--bg-deep); border: 1px solid var(--line-soft); border-radius: 30px; overflow: hidden; transition: all 0.3s ease;
   }
   .bloque:hover { border-color: var(--line); }
-  .bloque.abierto { border-color: var(--accent); background: var(--bg-card); }
+  .bloque.abierto { border-color: var(--accent); background: var(--bg-card); border-radius: 16px; }
   
   .bloque-header {
-    display: flex; align-items: center; gap: 1.25rem; padding: 1.35rem 1.75rem; cursor: pointer; user-select: none;
+    display: flex; align-items: center; gap: 1.25rem; padding: 1.1rem 1.75rem; cursor: pointer; user-select: none;
   }
   .bloque.abierto .bloque-header { border-bottom: 1px solid var(--line-soft); }
-  .bloque-titulo { flex: 1; font-weight: 400; color: var(--ink); font-size: 1rem; line-height: 1.4; letter-spacing: -0.005em; }
+  .bloque-titulo { flex: 1; font-weight: 500; color: var(--ink); font-size: 0.95rem; line-height: 1.4; letter-spacing: -0.005em; }
   
   .bloque-icono {
     width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0; position: relative;
@@ -321,13 +362,39 @@
   
   .bloque-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
   .bloque.abierto .bloque-body { max-height: 800px; }
-  .bloque-contenido { padding: 1.5rem 1.75rem 1.75rem; font-size: 0.95rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .bloque-contenido { padding: 1.5rem 1.75rem 1.75rem; font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
   .bloque-contenido strong { color: var(--ink); font-weight: 500; }
 
+  /* Listas estilizadas para Obras Sociales */
+  .obras-lista {
+    list-style: none;
+    margin-top: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+  }
+  .obras-lista li {
+    position: relative;
+    padding-left: 1rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .obras-lista li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .faq-grid { grid-template-columns: 1fr; }
+    .bloque { border-radius: 24px; }
+  }
   @media (max-width: 768px) {
-    .bloque-header { padding: 1.1rem 1.25rem; }
-    .bloque-titulo { font-size: 0.93rem; }
+    .bloque-header { padding: 1rem 1.25rem; }
+    .bloque-titulo { font-size: 0.9rem; }
     .bloque-contenido { padding: 1.25rem; }
+    .obras-lista { grid-template-columns: 1fr; }
   }
 
   /* CTA FINAL */
@@ -432,65 +499,119 @@
   </div>
 </section>
 
-<section class="section" id="preguntas-frecuentes">
-  <div class="section-inner">
+<section class="section video-section" id="preguntas-frecuentes">
+  <div class="section-inner wide">
     <div class="section-header">
-      <span class="section-eyebrow">Dudas comunes</span>
+      <span class="section-eyebrow">Conocenos más</span>
       <h2 class="section-title">Preguntas frecuentes sobre <strong>Diálisis en Vacaciones</strong>.</h2>
-      <p class="section-sub">Pacientes de todo el país nos eligen. Aquí resumimos todo lo necesario para tu tranquilidad médica.</p>
+      <p class="section-sub">Mirá nuestro video institucional y despejá todas tus dudas sobre el programa para asegurar tu atención en Alta Gracia.</p>
     </div>
 
-    <div class="faq-container">
+    <div class="video-container">
+      <div class="video-ratio">
+        <iframe 
+          src="https://www.youtube.com/embed/LJ0oXjd43FQ" 
+          title="Diálisis en Vacaciones - Aterym Alta Gracia" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+
+    <div class="faq-grid">
       
-      <div class="bloque">
-        <div class="bloque-header" onclick="toggleBloque(this)">
-          <span class="bloque-titulo">¿Qué documentación médica debo presentar?</span>
-          <span class="bloque-icono"></span>
-        </div>
-        <div class="bloque-body">
-          <div class="bloque-contenido">
-            Deberás presentar tu <strong>documento de identidad, carnet de obra social o prepaga, tu historia clínica completa</strong> y los últimos estudios preliminares de tu centro de origen. Una vez que te contactemos, te detallaremos exactamente qué análisis laboratorios requerimos.
+      <div class="faq-column">
+        
+        <div class="bloque">
+          <div class="bloque-header" onclick="toggleBloque(this)">
+            <span class="bloque-titulo">¿Qué es diálisis en vacaciones?</span>
+            <span class="bloque-icono"></span>
+          </div>
+          <div class="bloque-body">
+            <div class="bloque-contenido">
+              Es un programa que brinda la posibilidad de combinar tu tratamiento en diálisis con unas merecidas vacaciones en las sierras de Córdoba.
+            </div>
           </div>
         </div>
+
+        <div class="bloque">
+          <div class="bloque-header" onclick="toggleBloque(this)">
+            <span class="bloque-titulo">¿Qué debo llevar el día que asista a la sesión?</span>
+            <span class="bloque-icono"></span>
+          </div>
+          <div class="bloque-body">
+            <div class="bloque-contenido">
+              El día de tu sesión deberás asistir con tu documento de identidad (DNI), credencial de tu cobertura médica y toda la documentación clínica obligatoria solicitada previamente por nuestro equipo médico.
+            </div>
+          </div>
+        </div>
+
+        <div class="bloque">
+          <div class="bloque-header" onclick="toggleBloque(this)">
+            <span class="bloque-titulo">¿Cómo sé si mi turno fue asignado?</span>
+            <span class="bloque-icono"></span>
+          </div>
+          <div class="bloque-body">
+            <div class="bloque-contenido">
+              Tu turno quedará formalmente confirmado una vez que nuestro equipo médico reciba, revise y apruebe la historia clínica y laboratorios enviados por tu centro de origen. Nos comunicaremos con vos de inmediato para informarte.
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="bloque">
-        <div class="bloque-header" onclick="toggleBloque(this)">
-          <span class="bloque-titulo">¿Con cuánta antelación debo programar mis turnos?</span>
-          <span class="bloque-icono"></span>
-        </div>
-        <div class="bloque-body">
-          <div class="bloque-contenido">
-            Recomendamos programar tus turnos con **no menos de 15 días de antelación**. Esto nos permite realizar los cruces administrativos necesarios con las coberturas médicas y asegurar el espacio en la modalidad horaria que te resulte más cómoda.
+      <div class="faq-column">
+        
+        <div class="bloque">
+          <div class="bloque-header" onclick="toggleBloque(this)">
+            <span class="bloque-titulo">¿Con cuánta antelación debo solicitar reserva?</span>
+            <span class="bloque-icono"></span>
+          </div>
+          <div class="bloque-body">
+            <div class="bloque-contenido">
+              Recomendamos programar los turnos con <strong>no menos de 15 días de antelación</strong> para asegurar disponibilidad de plazas y realizar los trámites pertinentes.
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="bloque">
-        <div class="bloque-header" onclick="toggleBloque(this)">
-          <span class="bloque-titulo">¿Qué obras sociales atienden en el programa?</span>
-          <span class="bloque-icono"></span>
-        </div>
-        <div class="bloque-body">
-          <div class="bloque-contenido">
-            Atendemos pacientes pertenecientes a <strong>PAMI</strong> así como también a diversas obras sociales nacionales, provinciales y coberturas de medicina privada. Te sugerimos consultar de forma directa vía WhatsApp para validar los convenios vigentes para tu cobertura específica.
+        <div class="bloque">
+          <div class="bloque-header" onclick="toggleBloque(this)">
+            <span class="bloque-titulo">¿Qué obras sociales atienden?</span>
+            <span class="bloque-icono"></span>
+          </div>
+          <div class="bloque-body">
+            <div class="bloque-contenido">
+              Prestamos servicios a las siguientes coberturas médicas:
+              <ul class="obras-lista">
+                <li>PAMI</li>
+                <li>Apross</li>
+                <li>Swiss Medical</li>
+                <li>NOBIS</li>
+                <li>OSDE</li>
+                <li>Avalian</li>
+                <li>Sanitas Salud</li>
+                <li>SanCor Salud</li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="bloque">
-        <div class="bloque-header" onclick="toggleBloque(this)">
-          <span class="bloque-titulo">¿Qué sucede si debo reprogramar o cancelar una sesión en viaje?</span>
-          <span class="bloque-icono"></span>
-        </div>
-        <div class="bloque-body">
-          <div class="bloque-contenido">
-            En caso de imprevistos o de no poder asistir, solicitamos comunicarte **de inmediato** con el coordinador médico del programa Diálisis en Vacaciones para reordenar el cronograma y garantizar la continuidad absoluta de tu tratamiento clínico.
+        <div class="bloque">
+          <div class="bloque-header" onclick="toggleBloque(this)">
+            <span class="bloque-titulo">¿Qué pasa si no puedo asistir a la sesión programada?</span>
+            <span class="bloque-icono"></span>
+          </div>
+          <div class="bloque-body">
+            <div class="bloque-contenido">
+              Si por alguna eventualidad necesitás cancelar o reprogramar tu turno, te solicitamos dar aviso inmediato a nuestro centro para evaluar las alternativas horarias y salvaguardar tu bienestar y continuidad de tratamiento.
+            </div>
           </div>
         </div>
+
       </div>
 
     </div>
+
   </div>
 </section>
 
@@ -556,13 +677,13 @@
 </a>
 
 <script>
-  // Script interactivo nativo para colapsar y abrir las FAQ (Estilo acordeón)
+  // Script para colapsar y abrir las FAQ (Estilo acordeón)
   function toggleBloque(header) {
     const bloque = header.parentElement;
     bloque.classList.toggle('abierto');
   }
 
-  // Cerrar el menú mobile al hacer click en un link interno
+  // Cerrar menú mobile al clickear links internos
   document.querySelectorAll('#navLinks a').forEach(a => {
     a.addEventListener('click', () => {
       document.getElementById('navLinks').classList.remove('mobile-show');
@@ -572,5 +693,3 @@
 
 </body>
 </html>
-
-```
