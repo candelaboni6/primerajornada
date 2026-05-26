@@ -1,0 +1,1270 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1era Jornada Nacional de Calidad en Diálisis · Aterym Alta Gracia</title>
+<meta name="description" content="10 y 11 de mayo de 2024 · Alta Gracia, Córdoba. El encuentro que inició un espacio inédito de intercambio sobre calidad aplicada al paciente renal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ec;
+    --bg-deep: #ebe6de;
+    --bg-card: #efeae2;
+    --ink: #1a2332;
+    --ink-soft: #4a5668;
+    --muted: #8a8578;
+    --accent: #3a5a7c;
+    --accent-deep: #2a4560;
+    --accent-tint: #e4ecf3;
+    --line: rgba(26,35,50,0.12);
+    --line-soft: rgba(26,35,50,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(58,90,124,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 85% 80%, rgba(58,90,124,0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(26,35,50,0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.1rem clamp(1.25rem, 4vw, 2.5rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-logo { height: 38px; width: auto; display: block; }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: rgba(244,241,236,0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: color .25s ease;
+  }
+  .nav-links a:hover { color: var(--bg); }
+
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.mobile-show { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--ink); padding: 1.25rem; gap: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 2;
+    min-height: 85vh;
+    min-height: 85dvh;
+    display: grid;
+    align-items: center;
+    padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 2.5rem);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://aterym.com/wp-content/uploads/2026/03/Jornada-de-Calidad-Aterym-Alta-Gracia-58.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,35,50,0.4) 0%, rgba(26,35,50,0.75) 60%, rgba(26,35,50,0.9) 100%);
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    color: var(--bg);
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--bg);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+    opacity: 0.9;
+    animation: fadeDown .9s ease-out both;
+  }
+  .hero-eyebrow .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--bg);
+    position: relative;
+  }
+
+  .hero h1 {
+    font-weight: 200;
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    letter-spacing: -0.035em;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    max-width: 20ch;
+    color: var(--bg);
+    animation: fadeUp 1s ease-out .2s both;
+  }
+  .hero h1 strong {
+    font-weight: 500;
+    color: var(--bg);
+    display: block;
+    position: relative;
+  }
+  .hero h1 strong::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--bg);
+    opacity: 0.5;
+    margin-top: 0.5rem;
+  }
+
+  .hero-fecha {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    animation: fadeUp 1s ease-out .35s both;
+    max-width: 50ch;
+  }
+  .hero-fecha span { opacity: 0.6; margin: 0 0.5rem; }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease-out .5s both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all .3s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+  }
+  .btn svg { width: 15px; height: 15px; transition: transform .3s ease; }
+  .btn:hover svg { transform: translateX(4px); }
+
+  .btn-primary { background: var(--bg); color: var(--ink); }
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateX(-101%);
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+  .btn-primary:hover { color: var(--bg); }
+  .btn-primary:hover::before { transform: translateX(0); }
+
+  /* SECTION WRAPPER */
+  .section {
+    position: relative;
+    z-index: 2;
+    padding: clamp(4rem, 10vw, 7rem) clamp(1.25rem, 4vw, 2.5rem);
+  }
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .section-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-weight: 200;
+    font-size: clamp(1.9rem, 4.2vw, 3rem);
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    max-width: 22ch;
+    margin: 0 auto;
+  }
+  .section-title strong { font-weight: 500; color: var(--accent); }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 44ch;
+    margin: 1.25rem auto 0;
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .intro {
+    background: var(--bg-deep);
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+    filter: saturate(0.92);
+  }
+  .gallery-item {
+    overflow: hidden;
+    background: var(--bg-card);
+    position: relative;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+
+  .g1 { grid-column: span 7; aspect-ratio: 4/3; }
+  .g2 { grid-column: span 5; aspect-ratio: 4/3; }
+  .g3 { grid-column: span 4; aspect-ratio: 1/1; }
+  .g4 { grid-column: span 4; aspect-ratio: 1/1; }
+  .g5 { grid-column: span 4; aspect-ratio: 1/1; }
+
+  @media (max-width: 780px) {
+    .g1, .g2, .g3, .g4, .g5 { grid-column: span 12; aspect-ratio: 16/10; }
+  }
+
+  /* PROGRAMA */
+  .programa {
+    background: var(--bg);
+  }
+
+  .dias-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+    background: var(--bg-deep);
+    padding: 5px;
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    max-width: 540px;
+  }
+  .dia-tab {
+    font-family: inherit;
+    background: transparent;
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .dia-tab:hover:not(.active) { color: var(--ink); }
+  .dia-tab.active { background: var(--ink); color: var(--bg); font-weight: 500; }
+
+  .dia-contenido { display: none; animation: fadeIn 0.4s ease; }
+  .dia-contenido.active { display: block; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* MOMENTOS */
+  .momento-especial {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0.25rem;
+    border-bottom: 1px dashed var(--line-soft);
+  }
+  .momento-especial:last-of-type { border-bottom: none; }
+  .momento-hora {
+    font-weight: 500;
+    color: var(--accent);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    min-width: 110px;
+    font-variant-numeric: tabular-nums;
+  }
+  .momento-titulo {
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .momento-especial.con-detalle .momento-titulo {
+    text-transform: none;
+    letter-spacing: 0.005em;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .momento-especial.con-detalle .momento-titulo strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .separador-tiempo { height: 1rem; }
+
+  /* BLOQUES ACCORDION */
+  .bloque {
+    background: var(--bg-deep);
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    margin: 0.6rem 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .bloque:hover { border-color: var(--line); }
+  .bloque.abierto { border-color: var(--accent); background: var(--bg-card); }
+
+  .bloque-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.35rem 1.75rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.25s ease;
+  }
+  .bloque.abierto .bloque-header { border-bottom: 1px solid var(--line-soft); }
+
+  .bloque-tag {
+    background: transparent;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+  .bloque.abierto .bloque-tag { background: var(--accent); color: var(--bg); }
+
+  .bloque-hora {
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    min-width: 115px;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+  .bloque-titulo {
+    flex: 1;
+    font-weight: 400;
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
+  .bloque-icono {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .bloque-icono::before, .bloque-icono::after {
+    content: '';
+    position: absolute;
+    background: var(--ink-soft);
+    transition: all 0.3s ease;
+  }
+  .bloque-icono::before { width: 9px; height: 1px; }
+  .bloque-icono::after { width: 1px; height: 9px; }
+  .bloque.abierto .bloque-icono { background: var(--accent); border-color: var(--accent); }
+  .bloque.abierto .bloque-icono::before, .bloque.abierto .bloque-icono::after { background: var(--bg); }
+  .bloque.abierto .bloque-icono::after { transform: rotate(90deg); }
+
+  .bloque-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease;
+  }
+  .bloque.abierto .bloque-body { max-height: 2000px; }
+  .bloque-contenido { padding: 1.5rem 1.75rem 2rem; }
+
+  .bloque-meta {
+    background: var(--accent-tint);
+    border-left: 2px solid var(--accent);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+  .bloque-coordina {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.35rem;
+    font-weight: 300;
+  }
+  .bloque-coordina strong { color: var(--ink); font-weight: 600; }
+
+  .disertantes-lista { display: flex; flex-direction: column; }
+  .disertante {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 1.75rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line-soft);
+    align-items: start;
+  }
+  .disertante:last-child { border-bottom: none; padding-bottom: 0; }
+  .disertante:first-child { padding-top: 0; }
+
+  .disertante-conferencia {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 0.93rem;
+    line-height: 1.45;
+    position: relative;
+    padding-left: 0.9rem;
+    letter-spacing: -0.005em;
+  }
+  .disertante-conferencia::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .disertante-info { display: flex; flex-direction: column; gap: 0.15rem; }
+  .disertante-nombre {
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .disertante-institucion {
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .programa-cta {
+    text-align: center;
+    margin-top: clamp(3rem, 5vw, 4rem);
+    padding-top: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--line-soft);
+  }
+  .programa-cta p {
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.75rem;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all .3s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-download::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    transform: translateX(-101%);
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-download span, .btn-download svg { position: relative; z-index: 1; }
+  .btn-download:hover::before { transform: translateX(0); }
+  .btn-download:hover { transform: translateY(-2px); }
+  .btn-download svg { width: 15px; height: 15px; }
+
+  /* INFO CARDS */
+  .info-cards-section { background: var(--bg-deep); }
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  .info-card {
+    background: var(--bg);
+    border: 1px solid var(--line-soft);
+    border-radius: 2px;
+    padding: 2.5rem 2rem;
+    text-align: left;
+    transition: all .3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 280px;
+  }
+  .info-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .info-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    background: var(--bg-card);
+  }
+  .info-card:hover::before { transform: scaleY(1); }
+
+  .info-card .card-num {
+    font-family: 'Inter', serif;
+    font-weight: 200;
+    font-size: 3.2rem;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+  }
+  .info-card .card-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  .info-card .card-title {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.5rem;
+  }
+  .info-card .card-desc {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-top: auto;
+  }
+  @media (max-width: 780px) {
+    .info-cards { grid-template-columns: 1fr; }
+    .info-card { min-height: auto; padding: 2rem; }
+    .info-card .card-num { font-size: 2.6rem; }
+  }
+
+  /* SEDE */
+  .sede {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 0;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .sede-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+    max-width: 100%;
+    min-height: 520px;
+  }
+  .sede-image {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+  }
+  .sede-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.9) brightness(0.95);
+    transition: transform 1.2s cubic-bezier(.2,.8,.2,1);
+  }
+  .sede-grid:hover .sede-image img { transform: scale(1.04); }
+  .sede-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 60%, rgba(26,35,50,0.4) 100%);
+  }
+  .sede-image-caption {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    z-index: 2;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--bg);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .sede-image-caption::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--bg);
+    opacity: 0.6;
+  }
+
+  .sede-content {
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .sede-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--bg);
+    opacity: 0.55;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .sede h2 {
+    font-weight: 200;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+  }
+  .sede h2 strong { font-weight: 500; color: var(--bg); display: block; }
+  .sede-address {
+    font-size: 1rem;
+    opacity: 0.75;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 40ch;
+  }
+  .sede-map {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--bg);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0.85rem 1.5rem;
+    border: 1px solid rgba(244,241,236,0.3);
+    border-radius: 2px;
+    transition: all .3s ease;
+    align-self: flex-start;
+  }
+  .sede-map:hover {
+    background: rgba(244,241,236,0.08);
+    border-color: var(--bg);
+    transform: translateY(-2px);
+  }
+  .sede-map svg { transition: transform .3s ease; }
+  .sede-map:hover svg { transform: translateX(3px); }
+
+  @media (max-width: 900px) {
+    .sede-grid { grid-template-columns: 1fr; min-height: auto; }
+    .sede-image { min-height: 320px; aspect-ratio: 16/10; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: var(--bg);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 2.5rem) 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(244,241,236,0.12);
+  }
+  .footer-logo img { height: 42px; width: auto; margin-bottom: 1.25rem; }
+  .footer-logo p {
+    font-size: 0.88rem;
+    opacity: 0.65;
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 30ch;
+  }
+  .footer-col h4 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--bg);
+    opacity: 0.5;
+    margin-bottom: 1.25rem;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col a {
+    color: var(--bg);
+    text-decoration: none;
+    font-size: 0.88rem;
+    opacity: 0.8;
+    font-weight: 300;
+    transition: opacity .25s ease;
+  }
+  .footer-col a:hover { opacity: 1; }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    font-size: 0.78rem;
+    opacity: 0.5;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-socials { display: flex; gap: 1.25rem; }
+  .footer-socials a { opacity: 0.7; transition: opacity .25s ease; }
+  .footer-socials a:hover { opacity: 1; }
+  .footer-socials svg { width: 18px; height: 18px; }
+
+  @media (max-width: 780px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 768px) {
+    .dias-tabs { max-width: 100%; }
+    .dia-tab { padding: 0.75rem 0.9rem; font-size: 0.72rem; }
+    .bloque-header { flex-wrap: wrap; padding: 1.1rem 1.25rem; gap: 0.75rem; }
+    .bloque-tag { font-size: 0.62rem; padding: 0.25rem 0.55rem; }
+    .bloque-hora { font-size: 0.78rem; min-width: auto; }
+    .bloque-titulo { flex-basis: 100%; font-size: 0.92rem; order: 3; }
+    .bloque-icono { margin-left: auto; width: 24px; height: 24px; }
+    .bloque-contenido { padding: 1.25rem 1.25rem 1.5rem; }
+    .disertante { grid-template-columns: 1fr; gap: 0.6rem; padding: 1rem 0; }
+    .momento-especial { gap: 1rem; padding: 0.9rem 0.25rem; }
+    .momento-hora { font-size: 0.75rem; min-width: 90px; }
+    .momento-titulo { font-size: 0.75rem; }
+  }
+  @media (max-width: 480px) {
+    .momento-especial { flex-direction: column; align-items: flex-start; gap: 0.25rem; padding: 0.85rem 0.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--bg);
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .nav-toggle svg { width: 22px; height: 22px; }
+  @media (max-width: 780px) {
+    .nav-toggle { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://aterym.com"><img class="nav-logo" src="https://aterym.com/wp-content/uploads/2025/12/Logo-blanco-Aterym.webp" alt="Aterym Alta Gracia"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://aterym.com/">Home</a></li>
+      <li><a href="https://aterym.com/institucion/">Institución</a></li>
+      <li><a href="https://aterym.com/calidad-y-seguridad-del-paciente/">Calidad y seguridad</a></li>
+      <li><a href="#programa">Programa</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('mobile-show')" aria-label="Abrir menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="pulse"></span>
+      <span>10 y 11 · Mayo · 2024</span>
+    </div>
+    <h1>1era Jornada Nacional<strong>de Calidad en Diálisis</strong></h1>
+    <p class="hero-fecha">El encuentro que inauguró nuestro espacio de intercambio sobre calidad y seguridad del paciente. <span>·</span> Alta Gracia, Córdoba.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#programa">
+        <span>Ver programa desarrollado</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section intro">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">La Jornada Histórica</span>
+      <h2 class="section-title">Compartir experiencias para <strong>mejorar la atención de la región</strong>.</h2>
+      <p class="section-sub">Un encuentro impulsado por nuestro compromiso con la excelencia y la mejora continua. Un espacio de diálogo inédito diseñado para conectar instituciones de salud, profesionales del sector nefrológico y referentes en gestión de calidad.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="gallery-item g1">
+        <img src="https://aterym.com/wp-content/uploads/2026/03/Jornada-de-Calidad-Aterym-Alta-Gracia-58.webp" alt="Jornada de Calidad - Aterym Alta Gracia" loading="lazy">
+      </div>
+      <div class="gallery-item g2">
+        <img src="https://aterym.com/wp-content/uploads/2026/03/328-Aterym-Jornadas-de-Calidad-2024.webp" alt="Jornadas de Calidad 2024" loading="lazy">
+      </div>
+      <div class="gallery-item g3">
+        <img src="https://aterym.com/wp-content/uploads/2025/12/car5.png" alt="Momento de la jornada" loading="lazy">
+      </div>
+      <div class="gallery-item g4">
+        <img src="https://aterym.com/wp-content/uploads/2025/12/car3.png" alt="Momento de la jornada" loading="lazy">
+      </div>
+      <div class="gallery-item g5">
+        <img src="https://aterym.com/wp-content/uploads/2025/12/car2.png" alt="Momento de la jornada" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section programa" id="programa">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">Programa Oficial</span>
+      <h2 class="section-title">Ejes temáticos, bloques y <strong>disertantes del encuentro</strong>.</h2>
+      <p class="section-sub">10 y 11 de mayo de 2024 · Alta Gracia, Córdoba.</p>
+    </div>
+
+    <div class="dias-tabs">
+      <button class="dia-tab active" data-dia="dia1">Día 1 · Viernes 10/5</button>
+      <button class="dia-tab" data-dia="dia2">Día 2 · Sábado 11/5</button>
+    </div>
+
+    <div class="dia-contenido active" id="dia1">
+
+      <div class="momento-especial">
+        <span class="momento-hora">16:30 — 17:00</span>
+        <span class="momento-titulo">Recepción & Acreditación</span>
+      </div>
+
+      <div class="momento-especial con-detalle">
+        <span class="momento-hora">17:00</span>
+        <span class="momento-titulo"><strong>Apertura oficial</strong> · Palabras de bienvenida</span>
+      </div>
+
+      <div class="separador-tiempo"></div>
+
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-tag">Bloque 1</span>
+          <span class="bloque-hora">17:00 — 18:30</span>
+          <span class="bloque-titulo">¿Por qué debemos trabajar en calidad?</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            <div class="bloque-meta">
+              <p class="bloque-coordina"><strong>Coordinadores:</strong> APM Facundo Romero (Aterym Alta Gracia) · Dr. Gustavo Villalba (Apheytrc)</p>
+            </div>
+            <div class="disertantes-lista">
+              <div class="disertante">
+                <div class="disertante-conferencia">Panel de Disertantes del Bloque</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Dra. Valeria Vukelic</span>
+                  <span class="disertante-institucion">Sanatorio Allende</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Lic. Claudio Abiega</span>
+                  <span class="disertante-institucion">Hospital Privado</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Dr. Fabián Vítolo</span>
+                  <span class="disertante-institucion">Noble Seguros</span>
+                </div>
+              </div>
+              <div class="disertante">
+                <div class="disertante-conferencia">Espacio de Preguntas</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Q&A</span>
+                  <span class="disertante-institucion">Debate e intercambio abierto con el auditorio.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-tag">Bloque 2</span>
+          <span class="bloque-hora">18:30 — 20:00</span>
+          <span class="bloque-titulo">¿Cómo iniciar los primeros pasos en calidad?</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            <div class="bloque-meta">
+              <p class="bloque-coordina"><strong>Coordinadores:</strong> Dra. Matilde Navarro (Hospital SAMIC, El Calafate) · Dra. Carolina Nadaya (Aterym Alta Gracia)</p>
+            </div>
+            <div class="disertantes-lista">
+              <div class="disertante">
+                <div class="disertante-conferencia">Panel de Disertantes del Bloque</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Lic. César Bernhardt</span>
+                  <span class="disertante-institucion">RINDO</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Lic. Silvia Juncos</span>
+                  <span class="disertante-institucion">OULTON</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Dr. Sergio Boni</span>
+                  <span class="disertante-institucion">ATERYM Alta Gracia</span>
+                </div>
+              </div>
+              <div class="disertante">
+                <div class="disertante-conferencia">Espacio de Preguntas</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Q&A</span>
+                  <span class="disertante-institucion">Debate e intercambio abierto con el auditorio.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dia-contenido" id="dia2">
+
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-tag">Bloque 3</span>
+          <span class="bloque-hora">9:00 — 10:30</span>
+          <span class="bloque-titulo">Experiencia de centros acreditados</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            <div class="bloque-meta">
+              <p class="bloque-coordina"><strong>Coordinador:</strong> Dr. Javier de Arteaga (Hospital Privado)</p>
+            </div>
+            <div class="disertantes-lista">
+              <div class="disertante">
+                <div class="disertante-conferencia">Panel de Disertantes del Bloque</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Dra. Susana Caminos</span>
+                  <span class="disertante-institucion">Hospital Italiano</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Dr. Enrique Majul</span>
+                  <span class="disertante-institucion">CURF</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Dr. Alejandro Pauletti</span>
+                  <span class="disertante-institucion">Instituto Médico Río Cuarto</span>
+                </div>
+              </div>
+              <div class="disertante">
+                <div class="disertante-conferencia">Espacio de Preguntas</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Q&A</span>
+                  <span class="disertante-institucion">Debate e intercambio abierto con el auditorio.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="momento-especial">
+        <span class="momento-hora">10:30 — 11:00</span>
+        <span class="momento-titulo">Networking Break</span>
+      </div>
+
+      <div class="bloque">
+        <div class="bloque-header" onclick="toggleBloque(this)">
+          <span class="bloque-tag">Bloque 4</span>
+          <span class="bloque-hora">11:00 — 12:30</span>
+          <span class="bloque-titulo">¿Cómo mantener calidad en el tiempo?</span>
+          <span class="bloque-icono"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="bloque-contenido">
+            <div class="bloque-meta">
+              <p class="bloque-coordina"><strong>Coordinadores:</strong> Farm. Lucía Romero (Aterym Alta Gracia) · Dr. Carlos Romero</p>
+            </div>
+            <div class="disertantes-lista">
+              <div class="disertante">
+                <div class="disertante-conferencia">Panel de Disertantes del Bloque</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Lic. Lilian Peuscovich</span>
+                  <span class="disertante-institucion">ITAES</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Dr. Alejandro Pauletti</span>
+                  <span class="disertante-institucion">Instituto Médico Río Cuarto</span>
+                  
+                  <span class="disertante-nombre" style="margin-top:0.5rem; display:block;">Dr. Fabián Vítolo</span>
+                  <span class="disertante-institucion">Noble Seguros</span>
+                </div>
+              </div>
+              <div class="disertante">
+                <div class="disertante-conferencia">Espacio de Preguntas & Cierre</div>
+                <div class="disertante-info">
+                  <span class="disertante-nombre">Q&A y Conclusiones</span>
+                  <span class="disertante-institucion">Cierre oficial de las actividades científicas de la 1era Jornada.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="momento-especial">
+        <span class="momento-hora">12:30</span>
+        <span class="momento-titulo">Cierre de la Jornada</span>
+      </div>
+
+    </div>
+
+    <div class="programa-cta">
+      <p>¿Querés conservar el folleto del programa original?</p>
+      <a class="btn-download" href="https://drive.google.com/drive/folders/10q1jpdBEG7RLaM2MNW0Os6jMdDweMW0F?usp=sharing" target="_blank" rel="noopener">
+        <span>Descargar programa histórico</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section info-cards-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="section-eyebrow">El Balance</span>
+      <h2 class="section-title">Una experiencia <strong>fundacional</strong>.</h2>
+    </div>
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="card-num">01</div>
+        <span class="card-eyebrow">Objetivo</span>
+        <h3 class="card-title">Intercambio regional</h3>
+        <p class="card-desc">Un encuentro enfocado en compartir experiencias reales y prácticas efectivas de gestión asistencial con instituciones de salud de toda la zona.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-num">02</div>
+        <span class="card-eyebrow">Institucional</span>
+        <h3 class="card-title">Acreditación Plena</h3>
+        <p class="card-desc">El evento nació motivado por el reconocimiento que el ITAES otorgó a Aterym, marcando el camino de la mejora continua en la diálisis de Córdoba.</p>
+      </div>
+      <div class="info-card">
+        <div class="card-num">03</div>
+        <span class="card-eyebrow">Cultura</span>
+        <h3 class="card-title">Seguridad del paciente</h3>
+        <p class="card-desc">Dos días centrados en sentar las bases conceptuales para transformar los protocolos escritos en hábitos médicos diarios y reales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sede">
+  <div class="sede-grid">
+    <div class="sede-image">
+      <img src="https://altagracia.ar/wp-content/uploads/2022/01/DSC_3768.jpg" alt="Howard Johnson Sierras Hotel - Alta Gracia" loading="lazy">
+      <div class="sede-image-caption">Sede de la Edición 2024</div>
+    </div>
+
+    <div class="sede-content">
+      <span class="sede-eyebrow">Sede del encuentro</span>
+      <h2>Howard Johnson<strong>Sierras Hotel and Casino</strong></h2>
+      <p class="sede-address">Alta Gracia, Córdoba. Argentina.</p>
+      <a class="sede-map" href="https://maps.google.com/?q=Cine+Teatro+Monumental+Sierras+Alta+Gracia" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Ver en Google Maps</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-logo">
+        <img src="https://aterym.com/wp-content/uploads/2025/12/Logo-blanco-Aterym.webp" alt="Aterym Alta Gracia">
+        <p>Institución acreditada en calidad y seguridad del paciente. Centro de nefrología y hemodiálisis en Alta Gracia, Córdoba.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Institución</h4>
+        <ul>
+          <li><a href="https://aterym.com/calidad-y-seguridad-del-paciente/">Calidad y seguridad</a></li>
+          <li><a href="https://aterym.com/institucion/">Equipo de profesionales</a></li>
+          <li><a href="https://aterym.com/institucion/">Instalaciones</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://maps.google.com/?q=Brasil+151+Alta+Gracia" target="_blank" rel="noopener">Brasil 151, Alta Gracia</a></li>
+          <li><a href="tel:+543547429304">3547 429 304</a></li>
+          <li><a href="tel:+543515649322">3515 649 322</a></li>
+          <li><a href="mailto:info@aterym.com">info@aterym.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Jornada Histórica</h4>
+        <ul>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="https://drive.google.com/drive/folders/10q1jpdBEG7RLaM2MNW0Os6jMdDweMW0F?usp=sharing" target="_blank" rel="noopener">Descargar programa</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Aterym Alta Gracia · Córdoba, Argentina</div>
+      <div class="footer-socials">
+        <a href="https://www.facebook.com/aterymnefrologia" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/81579909/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.instagram.com/aterymnefrologia/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleBloque(header) {
+    const bloque = header.parentElement;
+    bloque.classList.toggle('abierto');
+  }
+
+  document.querySelectorAll('.dia-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.dia-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.dia-contenido').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.dia).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
